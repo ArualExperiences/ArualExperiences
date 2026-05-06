@@ -3,614 +3,386 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arual Experiences| Cotizador</title>
-    
-    <!-- Fuente moderna desde Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Viajes de Ensueño | Tu Agencia</title>
+    <!-- Fuente moderna de Google -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
     <style>
-        /* --- VARIABLES DE DISEÑO Y RESETEO --- */
+
+      /* Agrega este estilo en la sección <style> para que el nuevo botón se vea genial */
+    .btn-cotizador {
+        background-color: var(--morado);
+        color: white;
+        padding: 15px 40px;
+        font-size: 20px;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: bold;
+        display: inline-block;
+        box-shadow: 0 4px 10px rgba(138, 43, 226, 0.3);
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+
+    .btn-cotizador:hover {
+        background-color: var(--blanco);
+        color: var(--morado);
+        border: 2px solid var(--morado);
+        transform: scale(1.05);
+    }
+        /* Paleta de Colores y Variables */
         :root {
-            --primary-color: #007bff; 
-            --primary-hover: #0056b3;
-            --accent-color: #ffc107; 
-            --bg-color: #f4f7f9;
-            --card-bg: #ffffff;
-            --text-main: #2d3436;
-            --text-secondary: #636e72;
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
-            --transition: all 0.3s ease;
-            --radius: 12px;
+            --azul-cielo: #87CEEB;
+            --amarillo: #FFD700;
+            --naranja: #FF8C00;
+            --morado: #8A2BE2;
+            --blanco: #ffffff;
+            --texto-oscuro: #333333;
+            --fondo-claro: #f4f7f6;
         }
 
+        /* Estilos Base */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: var(--fondo-claro);
+            color: var(--texto-oscuro);
             line-height: 1.6;
-            overflow-x: hidden;
+            scroll-behavior: smooth; /* Para que el menú baje suavemente */
         }
 
-        /* --- ENCABEZADO Y LOGO CON MOVIMIENTO --- */
+        /* Encabezado */
         header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #00c6ff 100%);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-            border-bottom-left-radius: 50% 10%;
-            border-bottom-right-radius: 50% 10%;
-            box-shadow: var(--shadow);
-        }
-
-        .logo-container {
+            background-color: var(--blanco);
+            padding: 15px 50px;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .logo-placeholder {
-            width: 80px;
-            height: 80px;
-            background-color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 40px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            position: relative;
-            animation: pulseLogo 2s infinite ease-in-out;
-        }
-
-        @keyframes pulseLogo {
-            0% { transform: scale(1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-            50% { transform: scale(1.05); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-            100% { transform: scale(1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-        }
-
-        .my-real-logo {
-            width: 100px;
+        /* Animación del Logotipo */
+        .logo-animado {
+            max-width: 70px; /* Tamaño máximo del logo */
             height: auto;
-            animation: pulseLogo 2s infinite ease-in-out;
+            animation: flotar 1s ease-in-out infinite;
         }
 
-        header h1 {
-            font-weight: 700;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        @keyframes flotar {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); } /* Sube ligeramente */
+            100% { transform: translateY(0px); }
         }
 
-        header p {
-            font-weight: 300;
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* --- CONTENIDO PRINCIPAL Y FORMULARIO --- */
-        main {
-            max-width: 800px;
-            margin: -40px auto 60px;
-            padding: 0 20px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .cotizador-card {
-            background-color: var(--card-bg);
-            padding: 40px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-
-        .section-title {
+        nav a {
+            text-decoration: none;
+            color: var(--texto-oscuro);
             font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 25px;
-            font-size: 1.5rem;
-            border-left: 5px solid var(--accent-color);
-            padding-left: 15px;
+            margin-left: 20px;
+            transition: color 0.3s ease;
         }
 
-        .form-group {
+        nav a:hover {
+            color: var(--naranja);
+        }
+
+        /* Sección Hero (Principal) */
+        .hero {
+            background: linear-gradient(135deg, var(--azul-cielo) 0%, var(--morado) 100%);
+            color: var(--blanco);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h2 {
+            font-size: 48px;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--text-main);
-            font-size: 0.95rem;
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
         }
 
-        select, input[type="date"], input[type="number"] {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid transparent;
-            border-radius: 8px;
-            background-color: #f0f3f5;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            color: var(--text-main);
-            transition: var(--transition);
+        /* Botón Principal */
+        .btn-principal {
+            background-color: var(--amarillo);
+            color: var(--texto-oscuro);
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            font-size: 18px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            display: inline-block;
         }
 
-        select:focus, input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            background-color: white;
-            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
-        }
-        
-        /* Estilo para campos calculados automáticamente */
-        input[readonly] {
-            background-color: #e9ecef;
-            color: #6c757d;
-            cursor: not-allowed;
-            border-color: transparent;
-        }
-        
-        input[readonly]:focus {
-            box-shadow: none;
-            border-color: transparent;
+        .btn-principal:hover {
+            background-color: var(--naranja);
+            color: var(--blanco);
+            transform: translateY(-3px);
         }
 
-        .help-text {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-top: 5px;
-            display: block;
+        /* Sección de Ofertas */
+        .ofertas-section {
+            padding: 80px 20px;
+            text-align: center;
         }
 
-        .warning-text {
-            color: #d63031;
-            font-weight: 600;
+        .ofertas-section h2 {
+            color: var(--morado);
+            font-size: 36px;
+            margin-bottom: 50px;
         }
 
-        .success-text {
-            color: #00b894;
-            font-weight: 600;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .row {
-            display: flex;
-            gap: 20px;
-        }
-
-        .col {
-            flex: 1;
-        }
-
-        /* --- DISEÑO DE HABITACIONES DINÁMICAS --- */
-        #habitaciones_container {
-            margin-top: 30px;
-        }
-
-        .habitacion-card {
-            background-color: #fbfcfd;
-            border: 1px solid #e9ecef;
-            padding: 25px;
-            border-radius: var(--radius);
-            margin-bottom: 20px;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .habitacion-card:hover {
-            border-color: rgba(0, 123, 255, 0.2);
-            background-color: #f8fbff;
-        }
-
-        .habitacion-title {
-            font-weight: 600;
-            color: var(--text-main);
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .habitacion-title::before {
-            content: '🏨';
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-
-        .edades-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-
-        /* --- BOTÓN DE WHATSAPP --- */
-        .btn-whatsapp {
-            background-color: #25D366; 
-            color: white;
-            border: none;
-            padding: 18px 30px;
-            width: 100%;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition);
+        .grid-ofertas {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin-top: 40px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Tarjetas de Oferta */
+        .tarjeta {
+            background-color: var(--blanco);
+            border-radius: 15px;
+            overflow: hidden;
+            width: 300px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            border-bottom: 5px solid var(--azul-cielo);
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-10px);
+            border-bottom-color: var(--naranja);
+        }
+
+        /* Estilo para las imágenes de las ofertas */
+        .imagen-oferta {
+            width: 100%;
+            height: 200px;
+            object-fit: cover; /* Asegura que la imagen no se deforme */
+            display: block;
+        }
+
+        .tarjeta-contenido {
+            padding: 25px;
+        }
+
+        .tarjeta h3 {
+            color: var(--morado);
+            margin-bottom: 10px;
+        }
+
+        .precio {
+            color: var(--naranja);
+            font-size: 24px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        /* Botón de WhatsApp General y Ofertas */
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            display: block;
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
         }
 
         .btn-whatsapp:hover {
-            background-color: #1ebe57;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            background-color: #128C7E;
         }
 
-        @media (max-width: 768px) {
-            header { padding: 40px 15px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
-            header h1 { font-size: 2rem; }
-            .cotizador-card { padding: 25px; }
-            .row { flex-direction: column; gap: 0; }
+        /* Sección de Contacto */
+        .contacto-section {
+            background-color: var(--blanco);
+            padding: 80px 20px;
+            text-align: center;
+            border-top: 5px solid var(--amarillo);
+        }
+
+        .contacto-section h2 {
+            color: var(--morado);
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .contacto-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-contacto-grande {
+            background-color: #25D366;
+            color: white;
+            padding: 15px 40px;
+            font-size: 20px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .btn-contacto-grande:hover {
+            transform: scale(1.05);
+            background-color: #128C7E;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--texto-oscuro);
+            color: var(--blanco);
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        footer span {
+            color: var(--amarillo);
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container logo-container">
-            <!-- REEMPLAZA ESTA IMAGEN CON TU LOGO REAL -->
-             <img src="img/logo.png" alt="Logo Agencia" class="my-real-logo"> 
-             
-            <h1>Arual Experiences</h1>
-            <p>Cotiza el viaje de tus sueños en segundos</p>
-        </div>
+        <!-- Aquí va tu logotipo de la carpeta img -->
+        <a href="#inicio">
+            <img src="img/logo.png" alt="Logotipo de mi Agencia" class="logo-animado">
+        </a>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#ofertas">Ofertas</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
     </header>
 
     <main>
-        <div class="cotizador-card">
-            <h2 class="section-title">Configura tu Viaje</h2>
+        <section id="inicio" class="hero">
+            <h3>Descubre el Mundo con </h3>
+            <h2>Arual Experiences</h2> 
+            <p>Las mejores experiencias con los precios más increíbles.</p>
+            <a href="#ofertas" class="btn-principal">Ver Promociones</a>
+        </section>
+
+        <section id="ofertas" class="ofertas-section">
+            <h2>Ofertas Exclusivas</h2>
             
-            <form id="form_cotizador">
+            <div class="grid-ofertas">
                 
-                <div class="form-group">
-                    <label for="origen">Selecciona tu Origen</label>
-                    <select id="origen" required>
-                        <option value="" disabled selected>Escoge una ciudad</option>
-                        <option value="LEON">Leon</option>
-                     
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="transporte">Tipo de Transporte</label>
-                    <select id="transporte" required onchange="actualizarInterfaz()">
-                        <option value="" disabled selected>Escoge cómo viajar</option>
-                        <option value="autobus">Autobús 🚌</option>
-                        <option value="avion">Avión ✈️</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="destino">Selecciona tu Destino</label>
-                    <select id="destino" required>
-                        <option value="" disabled selected>Primero selecciona transporte</option>
-                    </select>
-                </div>
-
-                <div class="form-group hidden" id="grupo_paquete">
-                    <label for="paquete">Tipo de Paquete</label>
-                    <select id="paquete" onchange="calcularFechaSalida()">
-                        <option value="4">3 noches | 4 dias</option>
-                        <option value="5">4 noches | 5 dias</option>
-                        <option value="6">5 noches | 6 dias</option>
-                    </select>
-                </div>
-
-                <!-- FECHAS: LLEGADA Y SALIDA -->
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="fecha">Fecha de Llegada</label>
-                            <input type="date" id="fecha" required onchange="validarFechaYCalcular()">
-                            <span class="help-text" id="ayuda_fecha"></span>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="fecha_salida">Fecha de Salida</label>
-                            <input type="date" id="fecha_salida" required>
-                            <span class="help-text" id="ayuda_fecha_salida">Selecciona el transporte primero</span>
-                        </div>
+                <!-- Oferta 1 -->
+                <div class="tarjeta">
+                    <!-- Imagen cargada desde la carpeta img -->
+                    <img src="img/oferta1.jpg" alt="Destino 1" class="imagen-oferta">
+                    <div class="tarjeta-contenido">
+                        <h3>Vive Puerto Vallarta</h3>
+                        <h4>Transporte redondo + Hotel Todo Incluido por 3 noches | 4 dias.</h4>
+                        <p>Temporada baja (Tarifas dinamicas sujetas a cambios)</p>
+                        <div class="precio">Dedes $6,500 P/p</div>
+                        <!-- RECUERDA CAMBIAR EL NÚMERO -->
+                        <a href="https://wa.me/524774902892?text=Hola,%20me%20interesa%20la%20oferta:%20Vive%20Puerto%20Vallarta." target="_blank" class="btn-whatsapp">
+                            Reserva por WhatsApp
+                        </a>
                     </div>
                 </div>
 
-                <h2 class="section-title" style="margin-top: 40px;">Hospedaje</h2>
-
-                <div class="form-group">
-                    <label for="num_habitaciones">¿Cuántas habitaciones necesitas?</label>
-                    <input type="number" id="num_habitaciones" min="1" max="5" value="1" required onchange="generarFormulariosHabitaciones()">
+                <!-- Oferta 2 -->
+                <div class="tarjeta">
+                    <!-- Imagen cargada desde la carpeta img -->
+                    <img src="img/oferta2.jpg" alt="Destino 2" class="imagen-oferta">
+                    <div class="tarjeta-contenido">
+                        <h3>Escapada a Cancun</h3>
+                        <h4>Vuelo + Hospedaje todo Incluido 3 noches | 4 dias.</h4>
+                        <p>Temporada baja (Tarifas dinamicas sujetas a cambios)</p>
+                        <div class="precio">Desde $11,500 P/p</div>
+                        <!-- RECUERDA CAMBIAR EL NÚMERO -->
+                        <a href="https://wa.me/524774902892?text=Hola,%20me%20interesa%20la%20oferta:%20Escapada%20a%20Cancun." target="_blank" class="btn-whatsapp">
+                            Reserva por WhatsApp
+                        </a>
+                    </div>
                 </div>
 
-                <div id="habitaciones_container"></div>
+                <!-- Oferta 3 -->
+                <div class="tarjeta">
+                    <!-- Imagen cargada desde la carpeta img -->
+                    <img src="img/oferta3.jpg" alt="Destino 3" class="imagen-oferta">
+                    <div class="tarjeta-contenido">
+                        <h3>Descubre Mazatlán</h3>
+                        <h4>Transporte redondo + Hotel Todo Incluido por 3 noches | 4 dias.</h4>
+                        <p>Temporada baja (Tarifas dinamicas sujetas a cambios)</p>
+                        <div class="precio">Dedes $8,000 P/p</div>
+                        <!-- RECUERDA CAMBIAR EL NÚMERO -->
+                        <a href="https://wa.me/524774902092?text=Hola,%20me%20interesa%20la%20oferta:%20Descubre%20Mazatlan." target="_blank" class="btn-whatsapp">
+                            Reserva por WhatsApp
+                        </a>
+                    </div>
+                </div>
 
-                <button type="submit" class="btn-whatsapp">
-                    <span class="btn-whatsapp-icon">💬</span>
-                    Solicitar Cotización por WhatsApp
-                </button>
-            </form>
-        </div>
+                <div class="tarjeta">
+                    <!-- Imagen cargada desde la carpeta img -->
+                    <img src="img/oferta4.jpg" alt="Destino 2" class="imagen-oferta">
+                    <div class="tarjeta-contenido">
+                        <h3>Experimeta Ixtapa</h3>
+                        <h4>Transporte redondo + Hotel Todo Incluido por 3 noches | 4 dias.</h4>
+                        <p>Temporada baja (Tarifas dinamicas sujetas a cambios)</p>
+                        <div class="precio">Dedes $7,500 P/p</div>
+                        <!-- RECUERDA CAMBIAR EL NÚMERO -->
+                        <a href="https://wa.me/524774902892?text=Hola,%20me%20interesa%20la%20oferta:%20Experimenta%20Ixtapa." target="_blank" class="btn-whatsapp">
+                            Reserva por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- Nueva Sección de Contacto -->
+        <section id="contacto" class="contacto-section">
+    <h2>¿Tienes un destino en mente?</h2>
+    <p>Si no encuentras lo que buscas en nuestras ofertas, escríbenos o utiliza nuestra herramienta de cotización en línea.</p>
+    
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+        
+        <!-- Botón de WhatsApp -->
+        <!-- RECUERDA CAMBIAR EL NÚMERO -->
+        <a href="https://wa.me/524774902892?text=Hola,%20quiero%20información%20para%20planear%20un%20viaje%20personalizado." target="_blank" class="btn-contacto-grande">
+            📲 Chatear con un Asesor
+        </a>
+
+        <!-- Botón del Cotizador Web -->
+        <!-- REEMPLAZA 'TU_LINK_AQUI' POR EL ENLACE DE TU COTIZADOR -->
+        <a href="https://arualexperiences.github.io/ArualExperiences/" target="_blank" class="btn-cotizador">
+            💻 Usar Cotizador Web
+        </a>
+        
+    </div>
+</section>
     </main>
 
-    <script>
-        // --- LÓGICA PRINCIPAL AL CAMBIAR TRANSPORTE ---
-        function actualizarInterfaz() {
-            const transporte = document.getElementById('transporte').value;
-            const destinoSelect = document.getElementById('destino');
-            const grupoPaquete = document.getElementById('grupo_paquete');
-            
-            const fechaInput = document.getElementById('fecha');
-            const ayudaFecha = document.getElementById('ayuda_fecha');
-            
-            const fechaSalidaInput = document.getElementById('fecha_salida');
-            const ayudaFechaSalida = document.getElementById('ayuda_fecha_salida');
-
-            // Limpiar destinos
-            destinoSelect.innerHTML = '<option value="" disabled selected>Escoge una ciudad</option>';
-            let opciones = ["Puerto Vallarta", "Mazatlán", "Ixtapa"];
-
-            // Limpiar fechas al cambiar transporte para evitar incongruencias
-            fechaInput.value = '';
-            fechaSalidaInput.value = '';
-
-            if (transporte === 'avion') {
-                opciones.push("Cancún (Solo Avión)");
-                grupoPaquete.classList.add('hidden'); 
-                
-                ayudaFecha.innerHTML = "Llegada libre.";
-                ayudaFecha.classList.remove('warning-text');
-                
-                // Configurar Fecha Salida para Avión
-                fechaSalidaInput.readOnly = false;
-                fechaSalidaInput.style.cursor = 'text';
-                ayudaFechaSalida.innerHTML = "Selecciona tu fecha de regreso.";
-                ayudaFechaSalida.className = 'help-text';
-
-            } else if (transporte === 'autobus') {
-                grupoPaquete.classList.remove('hidden'); 
-                
-                ayudaFecha.innerHTML = "🚌 Solo: <span class='warning-text'>Lunes, Jueves o Domingo</span>.";
-                
-                // Configurar Fecha Salida para Autobús
-                fechaSalidaInput.readOnly = true; 
-                fechaSalidaInput.style.cursor = 'not-allowed';
-                ayudaFechaSalida.innerHTML = "Se calculará automáticamente según el paquete.";
-                ayudaFechaSalida.className = 'help-text';
-            }
-
-            opciones.forEach(dest => {
-                const option = document.createElement('option');
-                option.value = dest;
-                option.textContent = dest;
-                destinoSelect.appendChild(option);
-            });
-        }
-
-        // --- VALIDAR LLEGADA Y ACTIVAR CÁLCULO DE SALIDA ---
-        function validarFechaYCalcular() {
-            const transporte = document.getElementById('transporte').value;
-            const fechaInput = document.getElementById('fecha');
-            
-            if (!fechaInput.value) return;
-
-            if (transporte === 'autobus') {
-                const dateParts = fechaInput.value.split('-');
-                const fechaSeleccionada = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
-                const diaSemana = fechaSeleccionada.getDay();
-                
-                // 0=Domingo, 1=Lunes, 4=Jueves
-                if (diaSemana !== 0 && diaSemana !== 1 && diaSemana !== 4) {
-                    alert("Lo sentimos 🚌. Para viajes en autobús, las llegadas solo están disponibles Lunes, Jueves o Domingo. Por favor selecciona otro día.");
-                    fechaInput.value = ''; 
-                    document.getElementById('fecha_salida').value = '';
-                    return;
-                }
-                
-                // Si la fecha es válida, calcular la salida
-                calcularFechaSalida();
-            }
-        }
-
-        // --- CALCULAR FECHA DE SALIDA (SOLO AUTOBÚS) ---
-        function calcularFechaSalida() {
-            const transporte = document.getElementById('transporte').value;
-            const fechaLlegada = document.getElementById('fecha').value;
-            const fechaSalidaInput = document.getElementById('fecha_salida');
-            const ayudaFechaSalida = document.getElementById('ayuda_fecha_salida');
-
-            if (transporte === 'autobus' && fechaLlegada) {
-                const paqueteDias = parseInt(document.getElementById('paquete').value);
-                
-                // Lógica de hotel: Un paquete de 3 días significa Llegada día 1, Salida día 3 (Llegada + 2 días)
-                const diasASumar = paqueteDias - 1;
-
-                const dateParts = fechaLlegada.split('-');
-                const fecha = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
-                
-                // Sumar los días
-                fecha.setDate(fecha.getDate() + diasASumar);
-
-                // Formatear de regreso a YYYY-MM-DD para el input
-                const año = fecha.getFullYear();
-                const mes = String(fecha.getMonth() + 1).padStart(2, '0');
-                const dia = String(fecha.getDate()).padStart(2, '0');
-
-                fechaSalidaInput.value = `${año}-${mes}-${dia}`;
-                ayudaFechaSalida.innerHTML = `Calculado: Paquete de ${paqueteDias} días.`;
-                ayudaFechaSalida.className = 'help-text success-text';
-            }
-        }
-
-        // --- GENERACIÓN DINÁMICA DE HABITACIONES ---
-        function generarFormulariosHabitaciones() {
-            const numHab = document.getElementById('num_habitaciones').value;
-            const container = document.getElementById('habitaciones_container');
-            
-            const valoresGuardados = [];
-            const cardsActuales = container.querySelectorAll('.habitacion-card');
-            cardsActuales.forEach(card => {
-                const id = card.dataset.habId;
-                valoresGuardados[id] = {
-                    adultos: document.getElementById(`adultos_${id}`).value,
-                    menores: document.getElementById(`menores_${id}`).value,
-                    edades: []
-                };
-                const menoresNum = valoresGuardados[id].menores;
-                for(let j=1; j<=menoresNum; j++) {
-                    const edadInput = document.getElementById(`edad_${id}_${j}`);
-                    if(edadInput) valoresGuardados[id].edades.push(edadInput.value);
-                }
-            });
-
-            container.innerHTML = ''; 
-
-            for (let i = 1; i <= numHab; i++) {
-                const valAdultos = valoresGuardados[i] ? valoresGuardados[i].adultos : 2;
-                const valMenores = valoresGuardados[i] ? valoresGuardados[i].menores : 0;
-
-                const cardHTML = `
-                    <div class="habitacion-card" data-hab-id="${i}">
-                        <div class="habitacion-title">Habitación ${i}</div>
-                        <div class="row">
-                            <div class="col col-adultos">
-                                <div class="form-group">
-                                    <label>Adultos</label>
-                                    <input type="number" id="adultos_${i}" min="1" max="4" value="${valAdultos}" required>
-                                </div>
-                            </div>
-                            <div class="col col-menores">
-                                <div class="form-group">
-                                    <label>Menores</label>
-                                    <input type="number" id="menores_${i}" min="0" max="3" value="${valMenores}" onchange="generarCamposEdades(${i})" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="edades_menores_container_${i}" class="edades-container ${valMenores > 0 ? '' : 'hidden'}"></div>
-                    </div>
-                `;
-                container.insertAdjacentHTML('beforeend', cardHTML);
-                
-                if(valMenores > 0) {
-                    generarCamposEdades(i, valoresGuardados[i] ? valoresGuardados[i].edades : []);
-                }
-            }
-        }
-
-        function generarCamposEdades(habId, edadesPrevia = []) {
-            const numMenores = document.getElementById(`menores_${habId}`).value;
-            const containerEdades = document.getElementById(`edades_menores_container_${habId}`);
-            
-            containerEdades.innerHTML = ''; 
-
-            if (numMenores > 0) {
-                containerEdades.classList.remove('hidden');
-                for (let j = 1; j <= numMenores; j++) {
-                    const edadVal = edadesPrevia[j-1] || ''; 
-                    const edadInputHTML = `
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <label style="font-size:0.8rem;">Edad Menor ${j}</label>
-                            <input type="number" id="edad_${habId}_${j}" min="0" max="17" value="${edadVal}" placeholder="Años" required>
-                        </div>
-                    `;
-                    containerEdades.insertAdjacentHTML('beforeend', edadInputHTML);
-                }
-            } else {
-                containerEdades.classList.add('hidden');
-            }
-        }
-
-        // --- ENVIAR A WHATSAPP ---
-        document.getElementById('form_cotizador').addEventListener('submit', function(e) {
-            e.preventDefault(); 
-            
-            const origen = document.getElementById('origen').value;
-            const transporte = document.getElementById('transporte').value;
-            const stringTransporte = transporte === 'autobus' ? '🚌 Autobús' : '✈️ Avión';
-            const destino = document.getElementById('destino').value;
-            
-            const fLlegada = document.getElementById('fecha').value.split('-');
-            const fSalida = document.getElementById('fecha_salida').value.split('-');
-            const fechaLlegadaFormateada = `${fLlegada[2]}/${fLlegada[1]}/${fLlegada[0]}`;
-            const fechaSalidaFormateada = `${fSalida[2]}/${fSalida[1]}/${fSalida[0]}`;
-            
-            const numHab = document.getElementById('num_habitaciones').value;
-
-            let mensaje = `*SOLICITUD DE COTIZACIÓN*%0A`;
-            mensaje += `-----------------------------%0A`;
-            mensaje += `📍 *Origen:* ${origen}%0A`;
-            mensaje += `🚙 *Transporte:* ${stringTransporte}%0A`;
-            mensaje += `🏖️ *Destino:* ${destino}%0A`;
-            
-            if (transporte === 'autobus') {
-                const paquete = document.getElementById('paquete').value;
-                mensaje += `📦 *Paquete:* ${paquete} Días%0A`;
-            }
-            
-            mensaje += `📥 *Llegada:* ${fechaLlegadaFormateada}%0A`;
-            mensaje += `🛫 *Regreso:* ${fechaSalidaFormateada}%0A`;
-
-            mensaje += `-----------------------------%0A`;
-            mensaje += `🏨 *Detalles de Habitación (${numHab}):*%0A`;
-
-            for (let i = 1; i <= numHab; i++) {
-                const adultos = document.getElementById(`adultos_${i}`).value;
-                const menores = document.getElementById(`menores_${i}`).value;
-                
-                mensaje += `%0A*Habitación ${i}:* ${adultos} Adultos`;
-                
-                if (menores > 0) {
-                    mensaje += `, ${menores} Menores`;
-                    let edadesArray = [];
-                    for (let j = 1; j <= menores; j++) {
-                        const edad = document.getElementById(`edad_${i}_${j}`).value;
-                        edadesArray.push(`${edad} años`);
-                    }
-                    mensaje += ` (Edades: ${edadesArray.join(', ')})`;
-                }
-            }
-            
-            mensaje += `%0A-----------------------------%0A`;
-            mensaje += `_Enviado desde el cotizador web._`;
-
-            // COLOCA TU NÚMERO AQUÍ (Ej: 52 + 10 dígitos)
-            const numeroTelAgencia = "524774902892"; 
-
-            const urlWhatsApp = `https://wa.me/${numeroTelAgencia}?text=${mensaje}`;
-            window.open(urlWhatsApp, '_blank');
-        });
-
-        // Inicializar el formulario
-        generarFormulariosHabitaciones();
-    </script>
+    <footer>
+        <p>&copy; 2026 Arual Experiences. Todos los derechos reservados.</p>
+        <p>Síguenos en nuestras redes o envíanos un <span>WhatsApp</span> para atención personalizada.</p>
+    </footer>
 
 </body>
 </html>
