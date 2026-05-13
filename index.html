@@ -1,388 +1,1018 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arual Experiences | Agencia de viajes</title>
-    <!-- Fuente moderna de Google -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arual Experiences | Agencia de Viajes</title>
 
-      /* Agrega este estilo en la sección <style> para que el nuevo botón se vea genial */
-    .btn-cotizador {
-        background-color: var(--morado);
-        color: white;
-        padding: 15px 40px;
-        font-size: 20px;
-        text-decoration: none;
-        border-radius: 30px;
-        font-weight: bold;
-        display: inline-block;
-        box-shadow: 0 4px 10px rgba(138, 43, 226, 0.3);
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
+  <!-- Tipografías modernas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --azul: #0077ff;
+      --azul-oscuro: #042b5f;
+      --turquesa: #00d4ff;
+      --naranja: #ff9f1c;
+      --rosa: #ff4d8d;
+      --blanco: #ffffff;
+      --gris: #f5f7fb;
+      --texto: #102033;
+      --sombra: 0 18px 45px rgba(0, 0, 0, .18);
+      --radio: 26px;
+      --manuscrita: 'Great Vibes', cursive;
     }
 
-    .btn-cotizador:hover {
-        background-color: var(--blanco);
-        color: var(--morado);
-        border: 2px solid var(--morado);
-        transform: scale(1.05);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-        /* Paleta de Colores y Variables */
-        :root {
-            --azul-cielo: #87CEEB;
-            --amarillo: #FFD700;
-            --naranja: #FF8C00;
-            --morado: #8A2BE2;
-            --blanco: #ffffff;
-            --texto-oscuro: #333333;
-            --fondo-claro: #f4f7f6;
-        }
 
-        /* Estilos Base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--texto);
+      background: var(--gris);
+      overflow-x: hidden;
+    }
 
-        body {
-            background-color: var(--fondo-claro);
-            color: var(--texto-oscuro);
-            line-height: 1.6;
-            scroll-behavior: smooth; /* Para que el menú baje suavemente */
-        }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-        /* Encabezado */
-        header {
-            background-color: var(--blanco);
-            padding: 15px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-        /* Animación del Logotipo */
-        .logo-animado {
-            max-width: 70px; /* Tamaño máximo del logo */
-            height: auto;
-            animation: flotar 1s ease-in-out infinite;
-        }
+    .contenedor {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
 
-        @keyframes flotar {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); } /* Sube ligeramente */
-            100% { transform: translateY(0px); }
-        }
+    /* NAV */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 50;
+      background: rgba(255, 255, 255, .78);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, .45);
+    }
 
-        nav a {
-            text-decoration: none;
-            color: var(--texto-oscuro);
-            font-weight: 600;
-            margin-left: 20px;
-            transition: color 0.3s ease;
-        }
+    .nav {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
 
-        nav a:hover {
-            color: var(--naranja);
-        }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      color: var(--azul-oscuro);
+      letter-spacing: -.6px;
+    }
 
-        /* Sección Hero (Principal) */
-        .hero {
-            background: linear-gradient(135deg, var(--azul-cielo) 0%, var(--morado) 100%);
-            color: var(--blanco);
-            text-align: center;
-            padding: 100px 20px;
-        }
+    .logo img {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      border-radius: 16px;
+    }
 
-        .hero h2 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
+    .logo span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15rem;
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -.6px;
+    }
 
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-        }
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-weight: 700;
+      color: var(--azul-oscuro);
+      font-size: .94rem;
+    }
 
-        /* Botón Principal */
-        .btn-principal {
-            background-color: var(--amarillo);
-            color: var(--texto-oscuro);
-            padding: 15px 30px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 30px;
-            font-size: 18px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-            display: inline-block;
-        }
+    .menu a:hover {
+      color: var(--azul);
+    }
 
-        .btn-principal:hover {
-            background-color: var(--naranja);
-            color: var(--blanco);
-            transform: translateY(-3px);
-        }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: none;
+      border-radius: 999px;
+      padding: 15px 24px;
+      background: linear-gradient(135deg, var(--azul), var(--turquesa));
+      color: white;
+      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(0, 119, 255, .32);
+      transition: .25s ease;
+      cursor: pointer;
+    }
 
-        /* Sección de Ofertas */
-        .ofertas-section {
-            padding: 80px 20px;
-            text-align: center;
-        }
+    .btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 18px 36px rgba(0, 119, 255, .42);
+    }
 
-        .ofertas-section h2 {
-            color: var(--morado);
-            font-size: 36px;
-            margin-bottom: 50px;
-        }
+    .btn.secundario {
+      background: white;
+      color: var(--azul-oscuro);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
+    }
 
-        .grid-ofertas {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      padding: 140px 0 80px;
+      display: grid;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(120deg, rgba(4,43,95,.88), rgba(0,119,255,.58), rgba(0,212,255,.30)),
+        url('IMG/hero-playa.jpg') center/cover no-repeat;
+    }
 
-        /* Tarjetas de Oferta */
-        .tarjeta {
-            background-color: var(--blanco);
-            border-radius: 15px;
-            overflow: hidden;
-            width: 300px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-            border-bottom: 5px solid var(--azul-cielo);
-        }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 580px;
+      height: 580px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,.26), transparent 65%);
+      right: -170px;
+      top: 90px;
+      animation: flotar 7s ease-in-out infinite alternate;
+    }
 
-        .tarjeta:hover {
-            transform: translateY(-10px);
-            border-bottom-color: var(--naranja);
-        }
+    @keyframes flotar {
+      from { transform: translateY(0); }
+      to { transform: translateY(35px); }
+    }
 
-        /* Estilo para las imágenes de las ofertas */
-        .imagen-oferta {
-            width: 100%;
-            height: 200px;
-            object-fit: cover; /* Asegura que la imagen no se deforme */
-            display: block;
-        }
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 46px;
+    }
 
-        .tarjeta-contenido {
-            padding: 25px;
-        }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.18);
+      color: white;
+      font-weight: 800;
+      font-size: .94rem;
+      backdrop-filter: blur(12px);
+      margin-bottom: 20px;
+      border: 1px solid rgba(255,255,255,.32);
+    }
 
-        .tarjeta h3 {
-            color: var(--morado);
-            margin-bottom: 10px;
-        }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      color: white;
+      font-size: clamp(3rem, 7vw, 6.7rem);
+      line-height: .88;
+      letter-spacing: -3px;
+      max-width: 760px;
+      text-shadow: 0 18px 40px rgba(0,0,0,.24);
+    }
 
-        .precio {
-            color: var(--naranja);
-            font-size: 24px;
-            font-weight: bold;
-            margin: 15px 0;
-        }
+    .hero h1 span {
+      font-family: 'Playfair Display', serif;
+      color: var(--naranja);
+      font-weight: 800;
+      letter-spacing: -2px;
+      text-shadow: 0 14px 35px rgba(255,159,28,.25);
+    }
 
-        /* Botón de WhatsApp General y Ofertas */
-        .btn-whatsapp {
-            background-color: #25D366;
-            color: white;
-            display: block;
-            padding: 12px;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: background-color 0.3s ease;
-        }
+    .frase-manuscrita {
+      font-family: var(--manuscrita);
+      color: white;
+      font-size: clamp(1.8rem, 3.2vw, 3rem);
+      line-height: 1;
+      margin-top: 16px;
+      text-shadow: 0 16px 35px rgba(0,0,0,.25);
+    }
 
-        .btn-whatsapp:hover {
-            background-color: #128C7E;
-        }
+    .hero p {
+      color: rgba(255,255,255,.92);
+      font-size: 1.16rem;
+      line-height: 1.8;
+      margin: 24px 0 32px;
+      max-width: 640px;
+      font-weight: 500;
+    }
 
-        /* Sección de Contacto */
-        .contacto-section {
-            background-color: var(--blanco);
-            padding: 80px 20px;
-            text-align: center;
-            border-top: 5px solid var(--amarillo);
-        }
+    .hero-botones {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
 
-        .contacto-section h2 {
-            color: var(--morado);
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
+    .hero-card {
+      background: rgba(255,255,255,.17);
+      border: 1px solid rgba(255,255,255,.35);
+      box-shadow: var(--sombra);
+      backdrop-filter: blur(18px);
+      border-radius: 34px;
+      padding: 18px;
+      transform: rotate(2deg);
+    }
 
-        .contacto-section p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    .hero-card img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      border-radius: 26px;
+    }
 
-        .btn-contacto-grande {
-            background-color: #25D366;
-            color: white;
-            padding: 15px 40px;
-            font-size: 20px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            display: inline-block;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
-            transition: transform 0.3s ease;
-        }
+    .precio-flotante {
+      margin-top: -70px;
+      margin-left: 24px;
+      position: relative;
+      background: white;
+      border-radius: 24px;
+      padding: 20px;
+      width: max-content;
+      box-shadow: 0 20px 42px rgba(0,0,0,.22);
+    }
 
-        .btn-contacto-grande:hover {
-            transform: scale(1.05);
-            background-color: #128C7E;
-        }
+    .precio-flotante small {
+      color: #6b7280;
+      font-weight: 800;
+    }
 
-        /* Footer */
-        footer {
-            background-color: var(--texto-oscuro);
-            color: var(--blanco);
-            text-align: center;
-            padding: 30px 20px;
-        }
-        
-        footer span {
-            color: var(--amarillo);
-        }
-    </style>
+    .precio-flotante strong {
+      display: block;
+      color: var(--azul-oscuro);
+      font-size: 1.7rem;
+      font-weight: 900;
+    }
+
+    /* SECCIONES */
+    section {
+      padding: 92px 0;
+    }
+
+    .titulo {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .titulo small {
+      color: var(--azul);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+    }
+
+    .titulo h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.3rem, 4.7vw, 4.6rem);
+      line-height: 1;
+      color: var(--azul-oscuro);
+      margin-top: 10px;
+      letter-spacing: -1.5px;
+    }
+
+        .titulo p {
+      max-width: 690px;
+      margin: 18px auto 0;
+      line-height: 1.75;
+      color: #5c6b7a;
+      font-weight: 500;
+    }
+
+    /* OFERTAS */
+    .ofertas-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .oferta {
+      background: white;
+      border-radius: var(--radio);
+      overflow: hidden;
+      box-shadow: 0 16px 34px rgba(12, 38, 70, .1);
+      transition: .28s ease;
+      position: relative;
+    }
+
+    .oferta:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 26px 54px rgba(12, 38, 70, .18);
+    }
+
+    .oferta-img {
+      height: 250px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .oferta-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .45s ease;
+    }
+
+    .oferta:hover img {
+      transform: scale(1.1);
+    }
+
+    .etiqueta {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: linear-gradient(135deg, var(--naranja), var(--rosa));
+      color: white;
+      font-weight: 900;
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-size: .82rem;
+      box-shadow: 0 12px 25px rgba(255,77,141,.32);
+    }
+
+    .oferta-body {
+      padding: 24px;
+    }
+
+    .oferta h3 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--azul-oscuro);
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+      font-weight: 900;
+    }
+
+    .oferta p {
+      color: #627386;
+      line-height: 1.65;
+      font-size: .96rem;
+      margin-bottom: 18px;
+    }
+
+    .oferta-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .precio {
+      color: var(--azul);
+      font-size: 1.45rem;
+      font-weight: 900;
+    }
+
+    .precio small {
+      display: block;
+      font-size: .72rem;
+      color: #7b8794;
+      font-weight: 800;
+    }
+
+    .mini-btn {
+      background: var(--azul-oscuro);
+      color: white;
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: .85rem;
+      transition: .25s ease;
+    }
+
+    .mini-btn:hover {
+      background: var(--azul);
+      transform: translateY(-2px);
+    }
+
+    /* BENEFICIOS */
+    .beneficios {
+      background: white;
+    }
+
+    .beneficios-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .beneficio {
+      padding: 30px 24px;
+      border-radius: var(--radio);
+      background: linear-gradient(180deg, #ffffff, #f5fbff);
+      border: 1px solid #e6eef7;
+      text-align: center;
+      transition: .25s ease;
+    }
+
+    .beneficio:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 35px rgba(0, 119, 255, .12);
+    }
+
+    .icono {
+      width: 66px;
+      height: 66px;
+      margin: 0 auto 18px;
+      display: grid;
+      place-items: center;
+      border-radius: 22px;
+      background: linear-gradient(135deg, var(--azul), var(--turquesa));
+      color: white;
+      font-size: 2rem;
+      box-shadow: 0 14px 28px rgba(0,119,255,.25);
+    }
+
+    .beneficio h3 {
+      color: var(--azul-oscuro);
+      margin-bottom: 10px;
+      font-weight: 900;
+    }
+
+    .beneficio p {
+      color: #627386;
+      line-height: 1.55;
+      font-size: .92rem;
+    }
+
+    /* DESTINOS */
+    .destinos-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr;
+      grid-auto-rows: 270px;
+      gap: 22px;
+    }
+
+    .destino {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.14);
+    }
+
+    .destino:first-child {
+      grid-row: span 2;
+    }
+
+    .destino img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .45s ease;
+    }
+
+    .destino:hover img {
+      transform: scale(1.1);
+    }
+
+    .destino::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,.72));
+    }
+
+    .destino-texto {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 2;
+      color: white;
+    }
+
+    .destino-texto h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .destino-texto p {
+      color: rgba(255,255,255,.86);
+      font-weight: 600;
+    }
+
+    /* CTA */
+    .cta {
+      background:
+        linear-gradient(135deg, rgba(4,43,95,.95), rgba(0,119,255,.78)),
+        url('IMG/cta-viaje.jpg') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      border-radius: 42px;
+      padding: 76px 30px;
+      box-shadow: var(--sombra);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.3rem, 5vw, 5rem);
+      line-height: 1;
+      margin-bottom: 18px;
+      font-weight: 800;
+    }
+
+    .cta p {
+      max-width: 760px;
+      margin: 0 auto 30px;
+      color: rgba(255,255,255,.9);
+      line-height: 1.75;
+      font-weight: 500;
+    }
+
+    .cta-botones {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* CONTACTO */
+    .contacto {
+      background: white;
+    }
+
+    .contacto-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    .info-contacto,
+    .formulario {
+      background: #f7faff;
+      border-radius: 34px;
+      padding: 34px;
+      border: 1px solid #e5eef8;
+    }
+
+    .info-contacto h3,
+    .formulario h3 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--azul-oscuro);
+      font-size: 1.65rem;
+      margin-bottom: 18px;
+      font-weight: 900;
+    }
+
+    .dato {
+      display: flex;
+      gap: 14px;
+      margin: 18px 0;
+      line-height: 1.55;
+      color: #516173;
+      font-weight: 600;
+    }
+
+    .dato strong {
+      color: var(--azul-oscuro);
+      display: block;
+      font-weight: 900;
+    }
+
+    form {
+      display: grid;
+      gap: 15px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid #dce8f5;
+      border-radius: 18px;
+      padding: 16px 18px;
+      font-family: inherit;
+      font-size: .98rem;
+      outline: none;
+      background: white;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--azul);
+      box-shadow: 0 0 0 4px rgba(0,119,255,.1);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    footer {
+      background: var(--azul-oscuro);
+      color: white;
+      padding: 34px 0;
+      text-align: center;
+    }
+
+    footer p {
+      color: rgba(255,255,255,.78);
+      font-weight: 600;
+      line-height: 1.7;
+    }
+
+    .whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 60;
+      width: 64px;
+      height: 64px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #25d366;
+      color: white;
+      font-size: 2rem;
+      box-shadow: 0 16px 34px rgba(37,211,102,.42);
+      animation: pulso 1.8s infinite;
+    }
+
+    @keyframes pulso {
+      0% { box-shadow: 0 0 0 0 rgba(37,211,102,.5); }
+      70% { box-shadow: 0 0 0 18px rgba(37,211,102,0); }
+      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 950px) {
+      .menu {
+        display: none;
+      }
+
+      .hero-grid,
+      .contacto-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        transform: none;
+      }
+
+      .ofertas-grid,
+      .beneficios-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .destinos-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        height: 76px;
+      }
+
+      .logo span {
+        font-size: .95rem;
+      }
+
+      .hero {
+        padding-top: 120px;
+      }
+
+      .hero h1 {
+        letter-spacing: -1.5px;
+      }
+
+      .hero-card img {
+        height: 340px;
+      }
+
+      .ofertas-grid,
+      .beneficios-grid,
+      .destinos-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .destino:first-child {
+        grid-row: span 1;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .hero-botones {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <!-- Aquí va tu logotipo de la carpeta img -->
-        <a href="#inicio">
-            <img src="img/logo.png" alt="Logotipo de mi Agencia" class="logo-animado">
-        </a>
-        <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#ofertas">Ofertas</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-    </header>
+  <!-- Cambia logo-arual.png por el nombre de tu logo dentro de la carpeta IMG -->
+  <header>
+    <div class="contenedor nav">
+      <a href="#inicio" class="logo">
+        <img src="IMG/logo-arual.png" alt="Logo Arual Experiences">
+        <span>Arual<br>Experiences</span>
+      </a>
 
-    <main>
-        <section id="inicio" class="hero">
-            <h3>Descubre el Mundo con </h3>
-            <h2>Arual Experiences</h2> 
-            <p>Las mejores experiencias con los precios más increíbles.</p>
-            <a href="#ofertas" class="btn-principal">Ver Promociones</a>
-        </section>
+      <nav class="menu">
+        <a href="#ofertas">Ofertas</a>
+        <a href="#destinos">Destinos</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
 
-        <section id="ofertas" class="ofertas-section">
-            <h2>Ofertas Exclusivas</h2>
-            
-            <div class="grid-ofertas">
-                
-                <!-- Oferta 1 -->
-                <div class="tarjeta">
-                    <!-- Imagen cargada desde la carpeta img -->
-                    <img src="img/oferta1.jpg" alt="Destino 1" class="imagen-oferta">
-                    <div class="tarjeta-contenido">
-                        <h3>Vive Puerto Vallarta</h3>
-                        <h4>Transporte redondo + Hotel Todo Incluido por 3 noches | 4 dias.</h4>
-                        <p>Temporada baja (Tarifas dinamicas sujetas a cambios)</p>
-                        <div class="precio">Dedes $6,500 P/p</div>
-                        <!-- RECUERDA CAMBIAR EL NÚMERO -->
-                        <a href="https://wa.me/524774902892?text=Hola,%20me%20interesa%20la%20oferta:%20Vive%20Puerto%20Vallarta." target="_blank" class="btn-whatsapp">
-                            Reserva por WhatsApp
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Oferta 2 -->
-                <div class="tarjeta">
-                    <!-- Imagen cargada desde la carpeta img -->
-                    <img src="img/oferta2.jpg" alt="Destino 2" class="imagen-oferta">
-                    <div class="tarjeta-contenido">
-                        <h3>Escapada a Cancun</h3>
-                        <h4>Vuelo + Hospedaje todo Incluido 3 noches | 4 dias.</h4>
-                        <p>Temporada baja (Tarifas dinamicas sujetas a cambios)</p>
-                        <div class="precio">Desde $11,500 P/p</div>
-                        <!-- RECUERDA CAMBIAR EL NÚMERO -->
-                        <a href="https://wa.me/524774902892?text=Hola,%20me%20interesa%20la%20oferta:%20Escapada%20a%20Cancun." target="_blank" class="btn-whatsapp">
-                            Reserva por WhatsApp
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Oferta 3 -->
-                <div class="tarjeta">
-                    <!-- Imagen cargada desde la carpeta img -->
-                    <img src="img/oferta3.jpg" alt="Destino 3" class="imagen-oferta">
-                    <div class="tarjeta-contenido">
-                        <h3>Descubre Mazatlán</h3>
-                        <h4>Transporte redondo + Hotel Todo Incluido por 3 noches | 4 dias.</h4>
-                        <p>Temporada baja (Tarifas dinamicas sujetas a cambios)</p>
-                        <div class="precio">Dedes $8,000 P/p</div>
-                        <!-- RECUERDA CAMBIAR EL NÚMERO -->
-                        <a href="https://wa.me/524774902092?text=Hola,%20me%20interesa%20la%20oferta:%20Descubre%20Mazatlan." target="_blank" class="btn-whatsapp">
-                            Reserva por WhatsApp
-                        </a>
-                    </div>
-                </div>
-
-                <div class="tarjeta">
-                    <!-- Imagen cargada desde la carpeta img -->
-                    <img src="img/oferta4.jpg" alt="Destino 2" class="imagen-oferta">
-                    <div class="tarjeta-contenido">
-                        <h3>Experimeta Ixtapa</h3>
-                        <h4>Transporte redondo + Hotel Todo Incluido por 3 noches | 4 dias.</h4>
-                        <p>Temporada baja (Tarifas dinamicas sujetas a cambios)</p>
-                        <div class="precio">Dedes $7,500 P/p</div>
-                        <!-- RECUERDA CAMBIAR EL NÚMERO -->
-                        <a href="https://wa.me/524774902892?text=Hola,%20me%20interesa%20la%20oferta:%20Experimenta%20Ixtapa." target="_blank" class="btn-whatsapp">
-                            Reserva por WhatsApp
-                        </a>
-                    </div>
-                </div>
-
-
-            </div>
-        </section>
-
-        <!-- Nueva Sección de Contacto -->
-        <section id="contacto" class="contacto-section">
-    <h2>¿Tienes un destino en mente?</h2>
-    <p>Si no encuentras lo que buscas en nuestras ofertas, escríbenos o utiliza nuestra herramienta de cotización en línea.</p>
-    
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-        
-        <!-- Botón de WhatsApp -->
-        <!-- RECUERDA CAMBIAR EL NÚMERO -->
-        <a href="https://wa.me/524774902892?text=Hola,%20quiero%20información%20para%20planear%20un%20viaje%20personalizado." target="_blank" class="btn-contacto-grande">
-            📲 Chatear con un Asesor
-        </a>
-
-        <!-- Botón del Cotizador Web -->
-        <!-- REEMPLAZA 'TU_LINK_AQUI' POR EL ENLACE DE TU COTIZADOR -->
-        <a href="https://arualexperiences.github.io/cotizador/" target="_blank" class="btn-cotizador">
-            💻 Usar Cotizador Web
-        </a>
-        
+      <a class="btn" href="https://arualexperiences.github.io/cotizador/" target="_blank" rel="noopener">Cotizar viaje</a>
     </div>
-</section>
-    </main>
+  </header>
 
-    <footer>
-        <p>&copy; 2026 Arual Experiences. Todos los derechos reservados.</p>
-        <p>Síguenos en nuestras redes o envíanos un <span>WhatsApp</span> para atención personalizada.</p>
-    </footer>
+  <main>
+    <section class="hero" id="inicio">
+      <div class="contenedor hero-grid">
+        <div>
+          <div class="badge">✈️ Viajes nacionales e internacionales</div>
+          <h1>Vive el viaje que siempre <span>soñaste</span></h1>
+          <div class="frase-manuscrita">Momentos únicos, destinos inolvidables</div>
+          <p>
+            En Arual Experiences armamos paquetes a playas, pueblos mágicos, Europa y destinos internacionales para que tú solo te preocupes por disfrutar.
+          </p>
+          <div class="hero-botones">
+            <a class="btn" href="https://arualexperiences.github.io/cotizador/" target="_blank" rel="noopener">Quiero cotizar ahora</a>
+            <a class="btn secundario" href="#ofertas">Ver ofertas</a>
+          </div>
+        </div>
 
+        <div class="hero-card">
+          <!-- Cambia portada-destino.jpg por tu imagen -->
+          <img src="IMG/portada-destino.jpg" alt="Viaje increíble con Arual Experiences">
+          <div class="precio-flotante">
+            <small>Paquetes desde</small>
+            <strong>$3,999 MXN</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ofertas">
+      <div class="contenedor">
+        <div class="titulo">
+          <small>Ofertas destacadas</small>
+          <h2>Escápate a lugares increíbles</h2>
+          <p>Cambia fácilmente las imágenes y precios. Solo reemplaza los archivos dentro de tu carpeta <strong>IMG</strong>.</p>
+        </div>
+
+        <div class="ofertas-grid">
+          <article class="oferta">
+            <div class="oferta-img">
+              <img src="img/oferta1.jpg" alt="Puerto Vallarta">
+              <span class="etiqueta">Todo incluido</span>
+            </div>
+            <div class="oferta-body">
+              <h3>Vive Puerto Vallarta</h3>
+              <p><strong>Transporte redondo + hotel todo incluido</strong> por 3 noches y 4 días. Temporada baja, tarifas dinámicas sujetas a cambios.</p>
+              <div class="oferta-footer">
+                <div class="precio"><small>Desde</small>$6,500 p/p</div>
+                <a class="mini-btn" href="https://wa.me/524774902892?text=Hola%2C%20me%20interesa%20la%20oferta%3A%20Vive%20Puerto%20Vallarta." target="_blank" rel="noopener">Reservar</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="oferta">
+            <div class="oferta-img">
+              <img src="img/oferta2.jpg" alt="Cancún">
+              <span class="etiqueta">Vuelo + hotel</span>
+            </div>
+            <div class="oferta-body">
+              <h3>Escapada a Cancún</h3>
+              <p><strong>Vuelo + hospedaje todo incluido</strong> por 3 noches y 4 días. Temporada baja, tarifas dinámicas sujetas a cambios.</p>
+              <div class="oferta-footer">
+                <div class="precio"><small>Desde</small>$11,500 p/p</div>
+                <a class="mini-btn" href="https://wa.me/524774902892?text=Hola%2C%20me%20interesa%20la%20oferta%3A%20Escapada%20a%20Canc%C3%BAn." target="_blank" rel="noopener">Reservar</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="oferta">
+            <div class="oferta-img">
+              <img src="img/oferta3.jpg" alt="Mazatlán">
+              <span class="etiqueta">Playa nacional</span>
+            </div>
+            <div class="oferta-body">
+              <h3>Descubre Mazatlán</h3>
+              <p><strong>Transporte redondo + hotel todo incluido</strong> por 3 noches y 4 días. Temporada baja, tarifas dinámicas sujetas a cambios.</p>
+              <div class="oferta-footer">
+                <div class="precio"><small>Desde</small>$8,000 p/p</div>
+                <a class="mini-btn" href="https://wa.me/524774902892?text=Hola%2C%20me%20interesa%20la%20oferta%3A%20Descubre%20Mazatl%C3%A1n." target="_blank" rel="noopener">Reservar</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="oferta">
+            <div class="oferta-img">
+              <img src="img/oferta4.jpg" alt="Ixtapa">
+              <span class="etiqueta">Escapada</span>
+            </div>
+            <div class="oferta-body">
+              <h3>Experimenta Ixtapa</h3>
+              <p><strong>Transporte redondo + hotel todo incluido</strong> por 3 noches y 4 días. Temporada baja, tarifas dinámicas sujetas a cambios.</p>
+              <div class="oferta-footer">
+                <div class="precio"><small>Desde</small>$7,500 p/p</div>
+                <a class="mini-btn" href="https://wa.me/524774902892?text=Hola%2C%20me%20interesa%20la%20oferta%3A%20Experimenta%20Ixtapa." target="_blank" rel="noopener">Reservar</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="beneficios" id="beneficios">
+      <div class="contenedor">
+        <div class="titulo">
+          <small>¿Por qué viajar con nosotros?</small>
+          <h2>Tu experiencia bien planeada</h2>
+        </div>
+
+        <div class="beneficios-grid">
+          <div class="beneficio">
+            <div class="icono">🧳</div>
+            <h3>Paquetes a tu medida</h3>
+            <p>Armamos opciones según tu presupuesto, fechas y tipo de viaje.</p>
+          </div>
+          <div class="beneficio">
+            <div class="icono">🏖️</div>
+            <h3>Destinos top</h3>
+            <p>Playas, pueblos, Europa e internacionales para todos los gustos.</p>
+          </div>
+          <div class="beneficio">
+            <div class="icono">💬</div>
+            <h3>Atención directa</h3>
+            <p>Comunicación rápida por WhatsApp para resolver tus dudas.</p>
+          </div>
+          <div class="beneficio">
+            <div class="icono">✅</div>
+            <h3>Viaja tranquilo</h3>
+            <p>Acompañamiento y asesoría para que tu viaje salga increíble.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="destinos">
+      <div class="contenedor">
+        <div class="titulo">
+          <small>Inspírate</small>
+          <h2>Destinos que venden solos</h2>
+          <p>Estas imágenes también se cambian desde la carpeta <strong>IMG</strong>. Usa nombres simples para no confundirte.</p>
+        </div>
+
+        <div class="destinos-grid">
+          <div class="destino">
+            <img src="IMG/destino-cancun.jpg" alt="Cancún">
+            <div class="destino-texto">
+              <h3>Cancún</h3>
+              <p>Mar azul, arena blanca y experiencias inolvidables.</p>
+            </div>
+          </div>
+          <div class="destino">
+            <img src="IMG/destino-paris.jpg" alt="París">
+            <div class="destino-texto">
+              <h3>París</h3>
+              <p>Romance, cultura y aventura europea.</p>
+            </div>
+          </div>
+          <div class="destino">
+            <img src="IMG/destino-cabos.jpg" alt="Los Cabos">
+            <div class="destino-texto">
+              <h3>Los Cabos</h3>
+              <p>Lujo, playa y paisajes espectaculares.</p>
+            </div>
+          </div>
+          <div class="destino">
+            <img src="IMG/destino-pueblo.jpg" alt="Pueblo mágico">
+            <div class="destino-texto">
+              <h3>Pueblos mágicos</h3>
+              <p>Escapadas perfectas de fin de semana.</p>
+            </div>
+          </div>
+          <div class="destino">
+            <img src="IMG/destino-caribe.jpg" alt="Caribe">
+            <div class="destino-texto">
+              <h3>Caribe</h3>
+              <p>Viajes internacionales para desconectarte.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="contenedor">
+        <div class="cta">
+          <h2>Tu próximo viaje empieza aquí</h2>
+          <p>Si no encuentras lo que buscas en nuestras ofertas, escríbenos o utiliza nuestra herramienta de cotización en línea.</p>
+          <div class="cta-botones">
+            <a class="btn" href="https://arualexperiences.github.io/cotizador/" target="_blank" rel="noopener">💻 Usar cotizador web</a>
+            <a class="btn secundario" href="https://wa.me/524774902892?text=Hola%2C%20quiero%20informaci%C3%B3n%20para%20planear%20un%20viaje%20personalizado." target="_blank" rel="noopener">📲 Chatear con un asesor</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contacto" id="contacto">
+      <div class="contenedor contacto-grid">
+        <div class="info-contacto">
+          <h3>Contacto</h3>
+          <div class="dato">
+            <span>📱</span>
+            <div>
+              <strong>WhatsApp</strong>
+              477 490 2892
+            </div>
+          </div>
+          <div class="dato">
+            <span>📍</span>
+            <div>
+              <strong>Dirección</strong>
+              H. Ayuntamiento 728, Col. Libertad, León, Gto.
+            </div>
+          </div>
+          <div class="dato">
+            <span>🪪</span>
+            <div>
+              <strong>RNT</strong>
+              0411020EC1250
+            </div>
+          </div>
+          <div class="dato">
+            <span>🌎</span>
+            <div>
+              <strong>Servicios</strong>
+              Playas, pueblos nacionales, paquetes europeos e internacionales.
+            </div>
+          </div>
+        </div>
+
+        <div class="formulario">
+          <h3>¿Tienes un destino en mente?</h3>
+          <p style="color:#627386; line-height:1.7; font-weight:600; margin-bottom:22px;">
+            Si no encuentras lo que buscas en nuestras promociones, puedes usar el cotizador web o escribirnos por WhatsApp para atención personalizada.
+          </p>
+          <div style="display:flex; flex-wrap:wrap; gap:14px;">
+            <a class="btn" href="https://arualexperiences.github.io/cotizador/" target="_blank" rel="noopener">💻 Usar cotizador web</a>
+            <a class="btn secundario" href="https://wa.me/524774902892?text=Hola%2C%20quiero%20informaci%C3%B3n%20para%20planear%20un%20viaje%20personalizado." target="_blank" rel="noopener">📲 Chatear con asesor</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contenedor">
+      <p>© 2026 Arual Experiences. Agencia de viajes en León, Guanajuato.</p>
+      <p>Diseñado para vender viajes, generar confianza y recibir cotizaciones por WhatsApp.</p>
+    </div>
+  </footer>
+
+  <a class="whatsapp" href="https://wa.me/524774902892?text=Hola%20Arual%20Experiences%2C%20quiero%20informaci%C3%B3n%20de%20un%20viaje" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+  <script>
+    // Página sin dependencias externas de JavaScript.
+    // Los botones de promociones abren WhatsApp directo.
+    // Los botones de cotización abren el cotizador oficial:
+    // https://arualexperiences.github.io/cotizador/
+  </script>
 </body>
 </html>
