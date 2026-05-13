@@ -66,44 +66,52 @@
     }
 
     .nav {
-      height: 82px;
+      min-height: 82px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 22px;
+      gap: 18px;
+      flex-wrap: nowrap;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       font-weight: 900;
       color: var(--azul-oscuro);
       letter-spacing: -.6px;
+      min-width: 0;
+      flex: 0 1 auto;
     }
 
     .logo img {
-      width: 54px;
-      height: 54px;
+      width: 58px;
+      height: 58px;
+      max-width: 58px;
+      max-height: 58px;
       object-fit: contain;
-      border-radius: 16px;
+      border-radius: 14px;
+      flex-shrink: 0;
     }
 
     .logo span {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       line-height: 1.05;
       font-weight: 900;
       letter-spacing: -.6px;
+      white-space: nowrap;
     }
 
     .menu {
       display: flex;
       align-items: center;
-      gap: 26px;
+      gap: 20px;
       font-weight: 700;
       color: var(--azul-oscuro);
-      font-size: .94rem;
+      font-size: .9rem;
+      flex-shrink: 1;
     }
 
     .menu a:hover {
@@ -117,7 +125,7 @@
       gap: 9px;
       border: none;
       border-radius: 999px;
-      padding: 15px 24px;
+      padding: 14px 20px;
       background: linear-gradient(135deg, var(--azul), var(--turquesa));
       color: white;
       font-weight: 900;
@@ -129,6 +137,13 @@
     .btn:hover {
       transform: translateY(-3px) scale(1.02);
       box-shadow: 0 18px 36px rgba(0, 119, 255, .42);
+    }
+
+    header .btn {
+      padding: 10px 14px;
+      font-size: .82rem;
+      min-width: auto;
+      white-space: nowrap;
     }
 
     .btn.secundario {
@@ -674,6 +689,24 @@
         display: none;
       }
 
+      .nav {
+        gap: 12px;
+      }
+
+      .logo img {
+        width: 52px;
+        height: 52px;
+        max-width: 52px;
+        max-height: 52px;
+      }
+
+      header .btn {
+        padding: 9px 12px;
+        font-size: .76rem;
+        white-space: nowrap;
+        box-shadow: 0 8px 18px rgba(0, 119, 255, .24);
+      }
+
       .hero-grid,
       .contacto-grid {
         grid-template-columns: 1fr;
@@ -695,11 +728,31 @@
 
     @media (max-width: 640px) {
       .nav {
-        height: 76px;
+        min-height: 74px;
+      }
+
+      .logo {
+        gap: 8px;
+      }
+
+      .logo img {
+        width: 46px;
+        height: 46px;
+        max-width: 46px;
+        max-height: 46px;
       }
 
       .logo span {
-        font-size: .95rem;
+        font-size: .82rem;
+        max-width: 92px;
+        white-space: normal;
+      }
+
+      header .btn {
+        width: auto;
+        padding: 8px 10px;
+        font-size: .68rem;
+        letter-spacing: -.2px;
       }
 
       .hero {
@@ -732,7 +785,7 @@
         flex-direction: column;
       }
 
-      .btn {
+      main .btn {
         width: 100%;
       }
     }
